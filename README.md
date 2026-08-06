@@ -1,226 +1,393 @@
-# 🛡️ HealthGuard AI — Health Insurance Price Prediction
-### Full-Stack ML Web Application | Flask + MySQL + Scikit-Learn
+# 🛡️ HealthGuard AI – Health Insurance Price Prediction System
+
+## 📌 Project Overview
+
+HealthGuard AI is a Full Stack Machine Learning web application that predicts health insurance premiums based on user information. The system allows users to register, log in, estimate their insurance premium using a trained Machine Learning model, view prediction history, and simulate payments. An admin dashboard is also included to manage users, predictions, and payments.
+
+This project demonstrates the integration of Machine Learning with a Flask web application and database management.
 
 ---
 
-## 📁 Project Structure
+# 🎯 Project Objective
+
+The objective of this project is to estimate health insurance premiums based on personal and medical details using Machine Learning. The application helps users understand the estimated insurance cost before purchasing an insurance policy.
+
+---
+
+# 🚀 Features
+
+## User Features
+
+- User Registration
+- Secure Login & Logout
+- Password Encryption using Bcrypt
+- Health Insurance Premium Prediction
+- Prediction History
+- Payment Simulation
+- User Profile
+
+## Admin Features
+
+- Admin Dashboard
+- View All Users
+- View All Predictions
+- View Payment Records
+- Dashboard Statistics
+
+---
+
+# 🛠️ Technologies Used
+
+## Programming Language
+- Python
+
+## Backend
+- Flask
+
+## Frontend
+- HTML
+- CSS
+- JavaScript
+
+## Machine Learning
+- Scikit-learn
+- Gradient Boosting Regressor
+
+## Database
+- SQLite
+- MySQL (Optional)
+
+## Security
+- Bcrypt Password Hashing
+- Flask Session Authentication
+
+## Model Storage
+- Pickle (.pkl)
+
+---
+
+# 📂 Project Structure
 
 ```
-health_insurance_app/
-├── app.py               ← Flask backend (all API routes)
-├── model.pkl            ← Pre-trained ML model (GradientBoosting)
-├── requirements.txt     ← Python dependencies
-├── schema.sql           ← MySQL database schema
-├── README.md            ← This file
-└── templates/
-    ├── index.html       ← Landing page
-    ├── login.html       ← Login page
-    ├── register.html    ← Registration page
-    ├── predict.html     ← Prediction form + payment + history
-    └── admin.html       ← Admin dashboard
+HealthGuard-AI/
+│
+├── app.py
+├── model.pkl
+├── schema.sql
+├── health_insurance.db
+├── requirements.txt
+├── README.md
+│
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── predict.html
+│   ├── profile.html
+│   └── admin.html
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+└── database/
 ```
 
 ---
 
-## ⚡ Quick Start
+# 🤖 Machine Learning Model
 
-### 1. Prerequisites
-- Python 3.9+
-- MySQL 8.0+
-- pip
+### Algorithm Used
 
-### 2. Install Python Dependencies
+- Gradient Boosting Regressor
+
+### Input Features
+
+- Age
+- Gender
+- BMI
+- Number of Children
+- Smoking Status
+- Region
+
+### Output
+
+- Estimated Health Insurance Premium
+
+---
+
+# 📊 Database Tables
+
+## Users
+
+Stores user information:
+
+- User ID
+- Username
+- Email
+- Password
+- Role
+- Created Date
+
+---
+
+## Predictions
+
+Stores prediction history:
+
+- Prediction ID
+- User ID
+- Age
+- Gender
+- BMI
+- Children
+- Smoker
+- Region
+- Predicted Premium
+- Prediction Date
+
+---
+
+## Payments
+
+Stores payment details:
+
+- Payment ID
+- User ID
+- Amount
+- Payment Method
+- Transaction ID
+- Payment Status
+- Payment Date
+
+---
+
+# 🔐 Authentication
+
+The application uses:
+
+- Bcrypt for password hashing
+- Flask Sessions for login management
+- Role-based access (User/Admin)
+
+---
+
+# 🔄 Project Workflow
+
+```
+User
+
+↓
+
+Register / Login
+
+↓
+
+Enter Insurance Details
+
+↓
+
+Machine Learning Model
+
+↓
+
+Predict Insurance Premium
+
+↓
+
+Store Prediction
+
+↓
+
+Display Result
+
+↓
+
+Payment Simulation
+
+↓
+
+Prediction History
+```
+
+---
+
+# 🌐 REST API Endpoints
+
+## Authentication
+
+```
+POST /api/register
+POST /api/login
+POST /api/logout
+GET  /api/session
+```
+
+## Prediction
+
+```
+POST /api/predict
+GET  /api/history
+```
+
+## Payment
+
+```
+POST /api/payment
+```
+
+## Admin
+
+```
+GET /api/admin/users
+GET /api/admin/predictions
+GET /api/admin/payments
+GET /api/admin/stats
+```
+
+---
+
+# 📚 Topics Covered
+
+### Python
+
+- Functions
+- Modules
+- Exception Handling
+- File Handling
+- OOP Concepts
+- Pickle
+
+### Flask
+
+- Routing
+- Templates
+- REST APIs
+- Sessions
+- Authentication
+- JSON Responses
+
+### Machine Learning
+
+- Supervised Learning
+- Regression
+- Data Preprocessing
+- Feature Engineering
+- Model Training
+- Model Evaluation
+- Model Deployment
+
+### Database
+
+- SQLite
+- MySQL
+- CRUD Operations
+- SQL Queries
+- Foreign Keys
+
+### Web Development
+
+- HTML
+- CSS
+- JavaScript
+- Responsive Design
+
+### Security
+
+- Password Hashing
+- Authentication
+- Authorization
+- Session Management
+
+### Software Engineering
+
+- MVC Architecture
+- Client-Server Architecture
+- Database Design
+- REST APIs
+
+---
+
+# ✅ Advantages
+
+- User-friendly interface
+- Secure authentication
+- Fast premium prediction
+- Prediction history
+- Admin dashboard
+- SQLite and MySQL support
+- Easy deployment
+- Machine Learning integration
+
+---
+
+# 🔮 Future Scope
+
+- Online Payment Gateway
+- Email Notifications
+- PDF Report Generation
+- JWT Authentication
+- Insurance Recommendation System
+- AI Chatbot Support
+- Docker Deployment
+- Cloud Deployment
+- Mobile Application
+
+---
+
+# ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/yourusername/HealthGuard-AI.git
+```
+
+### Navigate to Project
+
+```bash
+cd HealthGuard-AI
+```
+
+### Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Set Up MySQL Database
-```bash
-# Login to MySQL
-mysql -u root -p
+### Run the Application
 
-# Run the schema
-mysql -u root -p < schema.sql
-```
-
-### 3.1 Start MySQL if it is not running
-On Windows, start the MySQL service from Services or use:
-```powershell
-net start MySQL
-```
-
-On macOS / Linux systems, use the appropriate service manager, e.g.:
-```bash
-brew services start mysql
-sudo systemctl start mysql
-```
-
-### 4. Configure Database Connection
-Edit `app.py` — find `DB_CONFIG` near the top and update:
-```python
-DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'YOUR_MYSQL_PASSWORD',   # ← Change this
-    'database': 'health_insurance_db',
-    'port': 3306
-}
-```
-Or use environment variables:
-```bash
-export DB_USER=root
-export DB_PASSWORD=your_password
-export DB_NAME=health_insurance_db
-```
-
-### 4.1 SQLite Fallback
-If MySQL is not available, the app can fall back to embedded SQLite automatically.
-Use this environment variable to force SQLite instead of MySQL:
-```bash
-export DB_ENGINE=sqlite
-```
-You can also change the SQLite file path:
-```bash
-export SQLITE_DB_PATH=health_insurance.db
-```
-
-### 5. Run the Application
 ```bash
 python app.py
 ```
 
-### 6. Open in Browser
+### Open Browser
+
 ```
 http://localhost:5010
 ```
 
 ---
 
-## 🔑 Default Credentials
+# 📈 Applications
 
-| Role  | Username | Password  |
-|-------|----------|-----------|
-| Admin | admin    | admin123  |
-
-> **Note:** The default admin is auto-created by `app.py` on first run if it doesn't exist in the DB.
-
----
-
-## 🌐 Application Pages
-
-| URL           | Description                      |
-|---------------|----------------------------------|
-| `/`           | Landing / Home page              |
-| `/login`      | User login                       |
-| `/register`   | User registration                |
-| `/predict`    | ML prediction form (auth required)|
-| `/dashboard`  | Admin dashboard (admin only)     |
+- Health Insurance Companies
+- Insurance Premium Estimation
+- Educational Machine Learning Projects
+- Data Science Portfolio Projects
+- College Major Projects
 
 ---
 
-## 🔌 API Endpoints
+# 👩‍💻 Developer
 
-### Authentication
-| Method | Endpoint        | Description        |
-|--------|-----------------|--------------------|
-| POST   | `/api/register` | Register new user  |
-| POST   | `/api/login`    | Login              |
-| POST   | `/api/logout`   | Logout             |
-| GET    | `/api/session`  | Check session      |
+**Mansha Khanna**
 
-### Predictions (login required)
-| Method | Endpoint        | Description              |
-|--------|-----------------|--------------------------|
-| POST   | `/api/predict`  | Get insurance prediction |
-| GET    | `/api/history`  | User's prediction history|
-
-### Payments (login required)
-| Method | Endpoint        | Description         |
-|--------|-----------------|---------------------|
-| POST   | `/api/payment`  | Process payment     |
-
-### Admin (admin role required)
-| Method | Endpoint                  | Description            |
-|--------|---------------------------|------------------------|
-| GET    | `/api/admin/stats`        | Dashboard statistics   |
-| GET    | `/api/admin/users`        | All users              |
-| GET    | `/api/admin/predictions`  | All predictions        |
-| GET    | `/api/admin/payments`     | All payments           |
+BCA (Data Science)
 
 ---
 
-## 🧠 ML Model
+# 📄 License
 
-- **Algorithm:** Gradient Boosting Regressor (scikit-learn)
-- **Features:** age, gender, BMI, children, smoker status, region
-- **Training score:** ~99.8% (on training data)
-- **Fallback:** If `model.pkl` is missing, an actuarial-style formula is used
-
-### Prediction Input Schema
-```json
-{
-  "age": 35,
-  "gender": "male",
-  "bmi": 24.5,
-  "children": 2,
-  "smoker": "no",
-  "region": "northeast"
-}
-```
-
-### Response
-```json
-{
-  "predicted_price": 12450.35,
-  "currency": "USD"
-}
-```
-
----
-
-## 🔒 Security Features
-
-- **Bcrypt** password hashing
-- **Flask session** management with secret key
-- **Role-based access control** (user / admin)
-- **Input validation** on all endpoints
-- **SQL injection protection** via parameterized queries
-
----
-
-## 🛠️ Environment Variables (Optional)
-
-| Variable    | Default              | Description          |
-|-------------|----------------------|----------------------|
-| SECRET_KEY  | `health_insurance_secret_2024` | Flask secret key |
-| DB_HOST     | `localhost`          | MySQL host           |
-| DB_USER     | `root`               | MySQL username       |
-| DB_PASSWORD | `your_password`      | MySQL password       |
-| DB_NAME     | `health_insurance_db`| Database name        |
-| DB_PORT     | `3306`               | MySQL port           |
-
----
-
-## 📦 Dependencies
-
-```
-flask          3.0.0   — Web framework
-flask-cors     4.0.0   — CORS support
-mysql-connector-python — MySQL driver
-bcrypt         4.1.2   — Password hashing
-numpy          1.26.2  — Numerical operations
-scikit-learn   1.3.2   — ML model
-```
-
----
-
-## 🚀 Running on a Different Port
-
-Change the last line of `app.py`:
-```python
-app.run(host='0.0.0.0', port=5010, debug=True)
-```
-
----
-
-*Built with Flask, MySQL, and Scikit-Learn.*
+This project is developed for educational and learning purposes.
